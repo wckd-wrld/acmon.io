@@ -1,15 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-
 const NavButton = ({ onClick }) => {
   return (
-    <div
-      onClick={onClick}
-      onKeyPress={onClick}
-      role="button"
-      tabIndex="0"
-    >
+    <div onClick={onClick} onKeyPress={onClick} role="button" tabIndex="0">
       <svg
         width="29"
         height="12"

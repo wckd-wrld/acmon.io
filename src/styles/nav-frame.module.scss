@@ -1,9 +1,33 @@
-.mobileFlex {
-  padding-left: 5%;
-  padding-right: 5%;
-  padding-top: 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+.navContainer {
+  padding: 5%;
+  position: absolute;
+  z-index: 99;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 3fr 4fr 1.5fr;
+  grid-template-rows: 2fr 10fr 1fr;
+  grid-template-areas: "navLogo . navButton" ". . ." "navIndicator navIndicator navGitButton";
 
+  .navLogo {
+    grid-area: navLogo;
+  }
+
+  .navButton {
+    grid-area: navButton;
+    justify-self: right;
+  }
+
+  .navIndicator {
+    grid-area: navIndicator;
+    justify-self: center;
+    align-self: center;
+  }
+
+  .navGitButton {
+    grid-area: navGitButton;
+    justify-self: center;
+    align-self: center;
+  }
 }
+
