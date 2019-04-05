@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import PropTypes from "prop-types"
+import { Transition } from "react-transition-group"
 
 import NavButton from "./nav-button"
 import NavLogo from "./nav-logo"
@@ -29,7 +30,11 @@ const NavFrame = ({ isMobile }) => {
             <NavGitButton />
           </div>
         </div>
-        <NavMenu isVisible={menuVisible} />
+        <Transition in={menuVisible} mountOnEnter unmountOnExit timeout={{enter: 800, exit: 300}}>
+        {state => (
+          <NavMenu transitionState={state} />
+        )}
+        </Transition>
       </>
     )
   }

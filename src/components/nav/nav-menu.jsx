@@ -1,66 +1,79 @@
-import React, { useState, useEffect } from "react"
-import posed from 'react-pose'
+import React, { useEffect } from "react"
+import anime from "animejs"
 
 import styles from "../../styles/nav-menu.module.scss"
 
+const NavMenu = ({ transitionState }) => {
 
-const AnimatedParent = posed.div({
-  hidden: { 
-    opacity: 0
-   },
-  visible: { 
-    opacity: 1,
-    delayChildren: 400,
-    staggerChildren: 50
-  }
-})
+  useEffect(() => { 
+    anime({
+      targets: (`.${  styles.menuContainer}`),
+      duration: 300,
+      easing: 'spring',
+      opacity: () => {
+        if (transitionState === 'entering') {
+          return 1.1
+        }
+        if (transitionState === 'exiting') {
+          return 0
+        }
+      }
+      
+    })
 
-const AnimatedChild = posed.div({
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 }
-})
+    anime({ 
+      targets: '#list-item',
+      duration: 200,
+      easing: 'spring',
+      delay: anime.stagger(100),
+      opacity: () => {
+        if (transitionState === 'entering') {
+          return [0,1]
+        }
+        if (transitionState === 'exiting') {
+          return [1,0]
+        }
+      },
+      translateX: () => {
+        if (transitionState === 'entering') {
+          return ['-10%', '0%']
+        }
+        if (transitionState === 'exiting') {
+          return ['0%', '-10%']
+        }
+      }
+    })
+  })
+  
 
-const AnimatedVertBar = posed.div({
-  hidden: { 
-    scaleY: 0,
-    opacity: 0,           
-  },
-  visible: { 
-    scaleY: 1,
-    opacity: 1 
-  }
-})
-
-
-const NavMenu = ({ isVisible }) => {
 
   return (
-    <>
-      <AnimatedParent className={styles.menuContainer} pose={isVisible ? 'visible' : 'hidden'}>
-        <AnimatedVertBar className={styles.vertBar}>
-          <svg
-            width="3"
-            height="274"
-            viewBox="0 0 3 274"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect
-              y="273.257"
-              width="273.257"
-              height="2"
-              rx="1"
-              transform="rotate(-89.915 0 273.257)"
-              fill="white"
-            />
-          </svg>
-        </AnimatedVertBar>
-        <AnimatedChild className={styles.item1}>workflow</AnimatedChild>
-        <AnimatedChild className={styles.item2}>design</AnimatedChild>
-        <AnimatedChild className={styles.item3}>code</AnimatedChild>
-        <AnimatedChild className={styles.item4}>contact</AnimatedChild>
-      </AnimatedParent>
-    </>
+        <>
+        <div className={styles.menuContainer}>
+          <div className={styles.vertBar}>
+            <svg
+              width="3"
+              height="274"
+              viewBox="0 0 3 274"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                y="273.257"
+                width="273.257"
+                height="2"
+                rx="1"
+                transform="rotate(-89.915 0 273.257)"
+                fill="white"
+              />
+            </svg>
+          </div>
+          <div id='list-item' className={styles.item1}>workflow</div>
+          <div id='list-item' className={styles.item2}>design</div>
+          <div id='list-item' className={styles.item3}>code</div>
+          <div id='list-item' className={styles.item4}>contact</div>
+        </div>
+        </>
   )
 }
 

@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "animejs": "^3.0.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.0.0",
     "gatsby": "^2.2.11",
@@ -17,12 +18,13 @@
     "gatsby-source-filesystem": "^2.0.23",
     "gatsby-transformer-sharp": "^2.1.14",
     "node-sass": "^4.11.0",
+    "popmotion": "^8.6.8",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-helmet": "^5.2.0",
-    "react-pose": "^4.0.8",
-    "react-responsive": "^6.1.1"
+    "react-responsive": "^6.1.1",
+    "react-transition-group": "^2.8.0"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "^3.0.1",

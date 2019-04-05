@@ -4,6 +4,7 @@ import { StaticQuery, graphql } from "gatsby"
 import MediaQuery from "react-responsive"
 
 import NavFrame from "./nav/nav-frame"
+
 import "./layout.css"
 
 const Layout = ({ children }) => (
